@@ -128,5 +128,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+wandb/
+
 # Data
 data_gender/
+
+# Models
+models/
