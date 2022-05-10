@@ -16,3 +16,7 @@ After rereading the paper: sampling should be different.
                      test: 200 instances from 5 speakers / gender, 20 instances per speaker
 * Include speakers with 500 < instance_count < 3000
 * Models: XLS, Slavic, something pretrained only on english (all pretrained) +  CLASSLA/Slavic finetuned (our checkpoint).
+
+# Addendum 2022-05-10T11:50:26
+
+The first model I trained was 
