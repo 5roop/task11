@@ -22,12 +22,11 @@ train["path"]=train["path"].apply(lambda s: "/home/peterr/macocu/task11/data_gen
 test["path"]= test["path"].apply(lambda s: "/home/peterr/macocu/task11/data_gender/seg."+s)
 
 
-for path in train.path:
-    if not os.path.exists(path):
-        print(path)
-for path in test.path:
-    if not os.path.exists(path):
-        print(path)
+if not all([os.path.exists(p) for p in train.path]):
+    raise AttributeError("Not all train paths exist!")
+if not all([os.path.exists(p) for p in test.path]):
+    raise AttributeError("Not all test paths exist!")
+
           
 train.to_csv("002_gender_train_for_datasets.csv")
 test.to_csv("002_gender_test_for_datasets.csv") 
@@ -76,7 +75,25 @@ config = AutoConfig.from_pretrained(
 )
 setattr(config, 'pooling_mode', pooling_mode)
 
-processor = Wav2Vec2Processor.from_pretrained(model_name_or_path,)
+try:
+    processor = Wav2Vec2Processor.from_pretrained(model_name_or_path,)
+except:
+    from transformers import Wav2Vec2CTCTokenizer, Wav2Vec2FeatureExtractor
+    tokenizer = Wav2Vec2CTCTokenizer.from_pretrained(
+        "./", unk_token="[UNK]", pad_token="[PAD]", word_delimiter_token=" "
+    )
+
+    feature_extractor = Wav2Vec2FeatureExtractor(
+        feature_size=1,
+        sampling_rate=16000,
+        padding_value=0.0,
+        do_normalize=True,
+        return_attention_mask=True,
+    )
+
+
+    processor = Wav2Vec2Processor(feature_extractor=feature_extractor, tokenizer=tokenizer)
+
 target_sampling_rate = processor.feature_extractor.sampling_rate
 print(f"The target sampling rate: {target_sampling_rate}")
 
