@@ -132,6 +132,7 @@ wandb/
 
 # Data
 data_gender/
+data_speaker_id/
 
 # Models
 models/
