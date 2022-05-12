@@ -11,9 +11,9 @@ import sys
 for i in range(5):
     model_name_or_path = "facebook/wav2vec2-large-slavic-voxpopuli-v2"
     NUM_EPOCH = 2
-    OUTPUT_DIR = "models/"+model_name_or_path.replace("/", "_")+"_2s"+str(i)
-    result_file = "002_results_2s.jsonl"
     TASK = "gender_2s"
+    OUTPUT_DIR = "models/"+model_name_or_path.replace("/", "_")+TASK+"_"+str(i)
+    result_file = "002_results_2s.jsonl"
     # %%
     train = pd.read_csv("002_gender_train_for_datasets.csv")
     test = pd.read_csv("002_gender_test_for_datasets.csv") 
@@ -441,38 +441,3 @@ for i in range(5):
     # %%
     trainer.train()
 
-    # %%
-
-
-    ## Evaluation:
-
-    def predict(batch):
-        features = processor(batch["speech"], sampling_rate=processor.feature_extractor.sampling_rate, return_tensors="pt", padding=True)
-
-        input_values = features.input_values.to(device)
-        attention_mask = features.attention_mask.to(device)
-
-        with torch.no_grad():
-            logits = model(input_values, attention_mask=attention_mask).logits 
-
-        pred_ids = torch.argmax(logits, dim=-1).detach().cpu().numpy()
-        batch["predicted"] = pred_ids
-        return batch
-
-    result = eval_dataset.map(predict, batched=True, batch_size=8)
-
-    y_true = [config.label2id[name] for name in result[output_column]]
-    y_pred = result["predicted"]
-
-
-    with open(result_file, "a") as f:
-        payload = {
-            "model_name": model_name_or_path,
-            "num_epoch": NUM_EPOCH,
-            "output_dir": OUTPUT_DIR,
-            "task": TASK,
-            "eval_split": "test",
-            "y_true": y_true,
-            "y_pred": y_pred
-        }
-        f.write(str(payload)+"\n")
