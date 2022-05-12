@@ -15,21 +15,26 @@ import sys
 model_name_or_path = "facebook/wav2vec2-large-slavic-voxpopuli-v2"
 NUM_EPOCH = 5
 # %%
-train = pd.read_csv("001_gender_train.csv").loc[:, ["path", "Speaker_gender"]]
-test = pd.read_csv("001_gender_test.csv").loc[:, ["path", "Speaker_gender"]]
+df = pd.read_csv("003_speaker_id.csv")
+train = df[df.split=="train"]
+dev = df[df.split=="dev"]
+test = df[df.split=="test"]
 
-train["path"]=train["path"].apply(lambda s: "/home/peterr/macocu/task11/data_gender/seg."+s)
-test["path"]= test["path"].apply(lambda s: "/home/peterr/macocu/task11/data_gender/seg."+s)
 
+train["path"]=train.path.apply(lambda s: "/home/peterr/macocu/task11/data_speaker_id/seg."+s)
+test["path"]= test.path.apply(lambda s: "/home/peterr/macocu/task11/data_speaker_id/seg."+s)
+dev["path"]= dev.path.apply(lambda s: "/home/peterr/macocu/task11/data_speaker_id/seg."+s)
 
 if not all([os.path.exists(p) for p in train.path]):
-    raise AttributeError("Not all train paths exist!")
+    raise FileNotFoundError("Not all train paths exist!")
 if not all([os.path.exists(p) for p in test.path]):
-    raise AttributeError("Not all test paths exist!")
-
+    raise FileNotFoundError("Not all test paths exist!")
+if not all([os.path.exists(p) for p in dev.path]):
+    raise FileNotFoundError("Not all dev paths exist!")
           
-train.to_csv("002_gender_train_for_datasets.csv")
-test.to_csv("002_gender_test_for_datasets.csv") 
+train.to_csv("003_speaker_id_train_for_datasets.csv", index=False)
+dev.to_csv("003_speaker_id_dev_for_datasets.csv", index=False) 
+test.to_csv("003_speaker_id_test_for_datasets.csv", index=False) 
 
 # %%
 import torchaudio
@@ -41,8 +46,8 @@ from datasets import load_dataset, load_metric
 
 
 data_files = {
-    "train": "002_gender_train_for_datasets.csv",
-    "validation": "002_gender_test_for_datasets.csv"
+    "train": "003_speaker_id_train_for_datasets.csv",
+    "validation": "003_speaker_id_dev_for_datasets.csv"
 }
 
 dataset = load_dataset("csv", data_files=data_files )
@@ -54,7 +59,7 @@ print(eval_dataset)
 
 # %%
 input_column = "path"
-output_column = "Speaker_gender"
+output_column = "Speaker_name"
 
 label_list = train_dataset.unique(output_column)
 label_list.sort()  # Let's sort it for determinism

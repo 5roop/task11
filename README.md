@@ -19,4 +19,4 @@ After rereading the paper: sampling should be different.
 
 # Addendum 2022-05-10T11:50:26
 
-The first model I trained was 
+The first model I trained was `facebook/wav2vec2-large-960h-lv60-self`, because Slavic does not have a tokenizer.
