@@ -134,6 +134,7 @@ wandb/
 data_gender/
 data_speaker_id/
 data_age/
+ParlaSpeech-HR.v1.0.jsonl
 
 # Models
 models/
