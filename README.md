@@ -20,3 +20,15 @@ After rereading the paper: sampling should be different.
 # Addendum 2022-05-10T11:50:26
 
 The first model I trained was `facebook/wav2vec2-large-960h-lv60-self`, because Slavic does not have a tokenizer.
+
+
+# Meeting notes 2022-05-13T10:21:13
+
+
+1. Repeat gender experiment with 10 epochs. (Separated by gender)
+2. Resplit the age dataset so that distributions are as close as possible to the original (gender wise) and then repeat 10 epochs.
+
+# Gender-wise age classification log
+
+* Splits at 43 (Females), 48 (Males)
+* Poopy results (Accuracy 45%, F1 41% females, 0.64, 0.6017 males)
