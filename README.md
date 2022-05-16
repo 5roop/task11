@@ -32,3 +32,19 @@ The first model I trained was `facebook/wav2vec2-large-960h-lv60-self`, because 
 
 * Splits at 43 (Females), 48 (Males)
 * Poopy results (Accuracy 45%, F1 41% females, 0.64, 0.6017 males)
+
+# After increasing the number of epochs to 15:
+
+* Results still not much better (females: acc, f1: 0.656, 0.6251, males: acc 0.71, f1 0.70)
+
+![females](images/005_age_clf_females_15_epochs_normalize_true.png)
+
+# Meeting notes 2022-05-16T09:12:49
+
+* Drop female age clf task.
+* A dev set is to be prepared for all datasets from train split. Reevaluate (train on train with our current optimal hyperparams, eval on dev and test). Speaker ID and gender CLF to be done on 2s train and full train. 
+* Prepare a pipeline for training and evaluation.
+* Re: Age: how does error correlate with age? 
+* Save the final models.
+
+* ✓ Gender: go with 25 for train, 5 for dev, 5 for test (keep dev similar to current test in composition)
