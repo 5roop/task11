@@ -48,3 +48,11 @@ The first model I trained was `facebook/wav2vec2-large-960h-lv60-self`, because 
 * Save the final models.
 
 * ✓ Gender: go with 25 for train, 5 for dev, 5 for test (keep dev similar to current test in composition)
+
+# Meeting notes - NIkola 2022-05-17T15:16:26
+
+For age: reconstruct what age gets predicted as what and plot a bar plot. 
+
+Rerun with facebook/wav2vec2-large, if it won't work, go with facebook/wav2vec2-large-lv60.
+
+Task_10: read the readme.
