@@ -56,3 +56,47 @@ For age: reconstruct what age gets predicted as what and plot a bar plot.
 Rerun with facebook/wav2vec2-large, if it won't work, go with facebook/wav2vec2-large-lv60.
 
 Task_10: read the readme.
+
+# Addendum 2022-05-18T12:37:39
+Went with facebook/wav2vec2-large-960h-lv60-self, the facebook/wav2vec2-large was terrible (0.5 on binary tasks, 0.02 on speaker ID)
+
+
+# Addendum 2022-05-18T20:47:18
+
+Analysis of the 'other' model:
+
+Gender:
+
+|                             |   accuracy |   macroF1 |
+|:----------------------------|-----------:|----------:|
+| ('001_gender_dev.csv', -1)  |     1      |    1      |
+| ('001_gender_dev.csv', 2)   |     0.997  |    0.997  |
+| ('001_gender_test.csv', -1) |     0.999  |    0.999  |
+| ('001_gender_test.csv', 2)  |     0.9935 |    0.9935 |
+
+![](images/011_cm_speaker_gender_test.png)
+
+Speaker ID:
+
+|                                              |   accuracy |   macroF1 |
+|:---------------------------------------------|-----------:|----------:|
+| ('003_speaker_id_dev_for_datasets.csv', -1)  |      0.316 | 0.255417  |
+| ('003_speaker_id_dev_for_datasets.csv', 2)   |      0.14  | 0.0799439 |
+| ('003_speaker_id_test_for_datasets.csv', -1) |      0.334 | 0.274969  |
+| ('003_speaker_id_test_for_datasets.csv', 2)  |      0.106 | 0.0479471 |
+
+![](images/011_cm_speaker_id_test.png)
+
+Age:
+
+|                          |   accuracy |   macroF1 |
+|:-------------------------|-----------:|----------:|
+| ('006_age_dev.csv', -1)  |      0.716 |  0.708729 |
+| ('006_age_test.csv', -1) |      0.678 |  0.672112 |
+
+![](images/011_cm_speaker_id_test.png)
+
+![](images/011_age_missclassifications_percentages_by_speaker_barh.png)
+
+![](images/011_age_missclassifications_percentages_scatter.png)
+
