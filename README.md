@@ -94,7 +94,9 @@ Age:
 | ('006_age_dev.csv', -1)  |      0.716 |  0.708729 |
 | ('006_age_test.csv', -1) |      0.678 |  0.672112 |
 
-![](images/011_cm_speaker_id_test.png)
+![](images/011_cm_speaker_age_test.png)
+
+![](images/011_age_missclassifications_histogram.png)
 
 ![](images/011_age_missclassifications_percentages_by_speaker_barh.png)
 
