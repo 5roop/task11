@@ -49,14 +49,14 @@ for clip in [-1, 2]:
             "clip_seconds": clip,
             "train_config": train_config
         }
-        y_true, y_pred = eval_model(config)
+        # y_true, y_pred = eval_model(config)
 
-        results.append({**config, "y_true": y_true, "y_pred": y_pred})
+        # results.append({**config, "y_true": y_true, "y_pred": y_pred})
 
 
-        import pandas as pd
-        df = pd.DataFrame(data=results)
-        df.to_json("010_results.jsonl", origin="records", lines=True)
+        # import pandas as pd
+        # df = pd.DataFrame(data=results)
+        # df.to_json("010_results.jsonl", origin="records", lines=True)
 # %% [markdown]
 # # 2: speaker ID
 
@@ -85,14 +85,14 @@ for clip in [-1, 2]:
             "clip_seconds": clip,
             "train_config": train_config,
         }
-        y_true, y_pred = eval_model(config)
+#         y_true, y_pred = eval_model(config)
 
-        results.append({**config, "y_true": y_true, "y_pred": y_pred})
+#         results.append({**config, "y_true": y_true, "y_pred": y_pred})
 
-# %%
-        import pandas as pd
-        df = pd.DataFrame(data=results)
-        df.to_json("010_results.jsonl", origin="records", lines=True)
+# # %%
+#         import pandas as pd
+#         df = pd.DataFrame(data=results)
+#         df.to_json("010_results.jsonl", origin="records", lines=True)
 
 # %% [markdown]
 # # 3. Age group - males
@@ -122,14 +122,14 @@ for clip in [-1]:
             "clip_seconds": clip,
             "train_config": train_config,
         }
-        y_true, y_pred = eval_model(config)
+#         y_true, y_pred = eval_model(config)
 
-        results.append({**config, "y_true": y_true, "y_pred": y_pred})
+#         results.append({**config, "y_true": y_true, "y_pred": y_pred})
 
-# %%
-        import pandas as pd
-        df = pd.DataFrame(data=results)
-        df.to_json("010_results.jsonl", origin="records", lines=True)
+# # %%
+#         import pandas as pd
+#         df = pd.DataFrame(data=results)
+#         df.to_json("010_results.jsonl", origin="records", lines=True)
 
 # %%
 
