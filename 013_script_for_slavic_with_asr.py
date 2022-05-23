@@ -188,7 +188,7 @@ results = []
 
 for clip in [-1]:
     train_config = {
-        "model_name_or_path": "classla/wav2vec2-large-slavic-parlaspeech-hr",
+        "model_name_or_path": "facebook/wav2vec2-large-960h-lv60-self",
         "TASK": "PARTY_STATUS_2s" if clip == 2 else "PARTY_STATUS",
         "NUM_EPOCH": 15,
         "data_files": {"train": "012_train.csv", "validation": "012_dev.csv"},
@@ -210,7 +210,7 @@ for clip in [-1]:
     for split in "dev test".split():
         config = {
             "output_column": "Party_status",
-            "model_name_or_path": "/home/peterr/macocu/task11/models/facebook_wav2vec2-large-slavic-voxpopuli-v2_PARTY_STATUS_/checkpoint-4680",
+            "model_name_or_path": "/home/peterr/macocu/task11/models/facebook_wav2vec2-large-960h-lv60-self_PARTY_STATUS_/checkpoint-4680",
             "eval_file": f"012_{split}.csv",
             "clip_seconds": clip,
             "train_config": train_config,
@@ -223,10 +223,10 @@ for clip in [-1]:
             import pandas as pd
             df = pd.DataFrame(data=results)
             try:
-                df_old = pd.read_json("013_results_slavic_asr.jsonl", orient="records", lines=True)
+                df_old = pd.read_json("013_results_english.jsonl", orient="records", lines=True)
                 df = pd.concat([df, df_old])
             except:
                 pass
-            df.to_json("013_results_slavic_asr.jsonl", orient="records", lines=True)
+            df.to_json("013_results_english.jsonl", orient="records", lines=True)
         except:
             pass
