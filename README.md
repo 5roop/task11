@@ -102,3 +102,27 @@ Age:
 
 ![](images/011_age_missclassifications_percentages_scatter.png)
 
+
+
+# Addendum 2022-05-23T08:15:59
+
+To sum up the results I shall prepare a table with all of the results we have so far:
+
+|    | output_column     | model                                        | eval_file                            |   clip_seconds |   macroF1 |   accuracy |
+|---:|:------------------|:---------------------------------------------|:-------------------------------------|---------------:|----------:|-----------:|
+|  0 | Party_status      | facebook/wav2vec2-large-slavic-voxpopuli-v2  | 012_test.csv                         |             -1 | 0.587285  |     0.59   |
+|  1 | Speaker_age_group | classla/wav2vec2-large-slavic-parlaspeech-hr | 006_age_test.csv                     |             -1 | 0.721715  |     0.722  |
+|  2 | Speaker_age_group | facebook/wav2vec2-large-960h-lv60-self       | 006_age_test.csv                     |             -1 | 0.672112  |     0.678  |
+|  3 | Speaker_age_group | facebook/wav2vec2-large-slavic-voxpopuli-v2  | 006_age_test.csv                     |             -1 | 0.689971  |     0.694  |
+|  4 | Speaker_gender    | classla/wav2vec2-large-slavic-parlaspeech-hr | 001_gender_test.csv                  |             -1 | 0.984997  |     0.985  |
+|  5 | Speaker_gender    | classla/wav2vec2-large-slavic-parlaspeech-hr | 001_gender_test.csv                  |              2 | 0.984997  |     0.985  |
+|  6 | Speaker_gender    | facebook/wav2vec2-large-960h-lv60-self       | 001_gender_test.csv                  |             -1 | 0.999     |     0.999  |
+|  7 | Speaker_gender    | facebook/wav2vec2-large-960h-lv60-self       | 001_gender_test.csv                  |              2 | 0.9935    |     0.9935 |
+|  8 | Speaker_gender    | facebook/wav2vec2-large-slavic-voxpopuli-v2  | 001_gender_test.csv                  |             -1 | 0.997     |     0.997  |
+|  9 | Speaker_gender    | facebook/wav2vec2-large-slavic-voxpopuli-v2  | 001_gender_test.csv                  |              2 | 0.989499  |     0.9895 |
+| 10 | Speaker_name      | classla/wav2vec2-large-slavic-parlaspeech-hr | 003_speaker_id_test_for_datasets.csv |             -1 | 1         |     1      |
+| 11 | Speaker_name      | classla/wav2vec2-large-slavic-parlaspeech-hr | 003_speaker_id_test_for_datasets.csv |              2 | 1         |     1      |
+| 12 | Speaker_name      | facebook/wav2vec2-large-960h-lv60-self       | 003_speaker_id_test_for_datasets.csv |             -1 | 0.274969  |     0.334  |
+| 13 | Speaker_name      | facebook/wav2vec2-large-960h-lv60-self       | 003_speaker_id_test_for_datasets.csv |              2 | 0.0479471 |     0.106  |
+| 14 | Speaker_name      | facebook/wav2vec2-large-slavic-voxpopuli-v2  | 003_speaker_id_test_for_datasets.csv |             -1 | 0.997995  |     0.998  |
+| 15 | Speaker_name      | facebook/wav2vec2-large-slavic-voxpopuli-v2  | 003_speaker_id_test_for_datasets.csv |              2 | 0.784407  |     0.806  |
