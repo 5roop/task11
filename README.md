@@ -126,3 +126,38 @@ To sum up the results I shall prepare a table with all of the results we have so
 | 13 | Speaker_name      | facebook/wav2vec2-large-960h-lv60-self       | 003_speaker_id_test_for_datasets.csv |              2 | 0.0479471 |     0.106  |
 | 14 | Speaker_name      | facebook/wav2vec2-large-slavic-voxpopuli-v2  | 003_speaker_id_test_for_datasets.csv |             -1 | 0.997995  |     0.998  |
 | 15 | Speaker_name      | facebook/wav2vec2-large-slavic-voxpopuli-v2  | 003_speaker_id_test_for_datasets.csv |              2 | 0.784407  |     0.806  |
+
+
+# Addendum 2022-05-24T09:39:02
+
+As per skype agreement I prepared the following breakdown of `classla/wav2vec2-large-slavic-parlaspeech-hr` performance:
+
+| Speaker_name            |   classified_correct | Party_status   |
+|:------------------------|---------------------:|:---------------|
+| Marić, Goran            |                 1    | Coalition      |
+| Zmajlović, Mihael       |                 1    | Opposition     |
+| Kajtazi, Veljko         |                 0.98 | Coalition      |
+| Madjer, Mladen          |                 0.88 | Coalition      |
+| Matić, Predrag          |                 0.86 | Opposition     |
+| Kujundžić, Milan        |                 0.84 | Coalition      |
+| Runtić, Hrvoje          |                 0.82 | Opposition     |
+| Šipić, Ivan             |                 0.78 | Coalition      |
+| Kovač, Stjepan          |                 0.72 | Opposition     |
+| Varga, Siniša           |                 0.62 | Coalition      |
+| Jankovics, Robert       |                 0.56 | Opposition     |
+| Vidović, Franko         |                 0.54 | Opposition     |
+| Ćorić, Tomislav         |                 0.54 | Coalition      |
+| Ivo Stier, Davor        |                 0.38 | Coalition      |
+| Kristić, Maro           |                 0.34 | Opposition     |
+| Daus, Emil              |                 0.22 | Opposition     |
+| Parić, Darko            |                 0.18 | Opposition     |
+| Ivan Milošević, Domagoj |                 0.02 | Coalition      |
+
+
+| Party_status   |   classified_correct |
+|:---------------|---------------------:|
+| Coalition      |             0.671111 |
+| Opposition     |             0.582222 |
+
+
+![](images/015_analysis_of_classla_parlaspeech_model_missclassifications.png)
