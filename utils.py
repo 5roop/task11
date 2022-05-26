@@ -158,6 +158,10 @@ def eval_model(config_dict):
         speech_array = speech_array.squeeze().numpy()
         speech_array = librosa.resample(np.asarray(speech_array), sampling_rate, processor.feature_extractor.sampling_rate)
 
+
+# /home/peterr/macocu/task11/utils.py:159: FutureWarning: 
+# Pass orig_sr=16000, target_sr=16000 as keyword args. 
+# From version 0.10 passing these as positional arguments will result in an error
         batch["speech"] = speech_array
         return batch
 
